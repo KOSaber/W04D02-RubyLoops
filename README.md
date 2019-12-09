@@ -181,12 +181,20 @@ Use `each` to do the following...
 
   ```ruby
   names = [ "Donald", "Daisy", "Huey", "Duey", "Luey" ]
+ 
+names.each do |str| str
+  puts "Hello #{str}! "
+end
   ```
 
 - Print out the squared values of every number in this numbers array.
 
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
+  numbers = [ 1, 3, 9, 11, 100 ]
+numbers.each do |num| num
+  puts num*num
+end
   ```
 
 - Print out the Celsius values for an array containing Fahrenheit values.
@@ -195,6 +203,11 @@ Use `each` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
+  
+fahrenheit_temps.each do |num|
+  puts  (num.to_f - 32) * 5 / 9
+   
+end
   ```
 
 - Insert all the values in the `artists` array into the `ninja_turtles` array.
@@ -202,6 +215,12 @@ Use `each` to do the following...
   ```ruby
   artists = [ "Leonardo", "Donatello", "Raphael", "Michelangelo" ]
   ninja_turtles = []
+
+  artists.each do |str|
+  ninja_turtles.push(str)
+   
+end
+p ninja_turtles
   ```
 
 - Print out every possible combination of the below ice cream flavors and toppings.
@@ -209,6 +228,13 @@ Use `each` to do the following...
   ```ruby
   flavors = [ "vanilla", "chocolate", "strawberry", "butter pecan", "cookies and cream", "rainbow" ]
   toppings = [ "gummi bears", "hot fudge", "butterscotch", "rainbow sprinkles", "chocolate sprinkles" ]
+  
+  flavors.each do |str|
+  puts "#{str} with #{toppings.sample}"
+  puts flavors.product(toppings)
+   
+end
+puts flavors.product(toppings)
   ```
 <details>
   <summary>
@@ -232,7 +258,7 @@ uppercase = cart.each do |product|
 end
 puts uppercase.join(", ")
 ```
-
+with each didnt save change to array
 ```rb
 cart = ["shoes", "watch", "computer"]
 uppercase = cart.map do |product|
@@ -245,7 +271,7 @@ puts uppercase.join(", ")
 
 How would you explain the difference in the result?
 ```
-
+with map the change saved to array
 ```
 
 #### Explore 2
@@ -267,7 +293,7 @@ puts uppercase.join(", ")
 
 What is the difference in the result of these two snippets?
 ```
-
+same result
 ```
 
 #### Explore 3: Bang
@@ -285,7 +311,7 @@ Below is the same snippet, but with `.map!` instead of `.map`.
 
 What does `!` often indicate in Ruby?
 ```
-
+here the change happen on new array 
 ```
 
 ```rb
@@ -297,7 +323,7 @@ puts uppercase
 
 What's the difference between `.map` and `.map!`?
 ```
-
+here change affect on original array
 ```
 
 ### Practice Map (15 minutes)
@@ -309,6 +335,10 @@ Use `map` to do the following...
   ```ruby
   first_names = [ "Donald", "Daisy", "Daffy" ]
 
+first_names.map do |str|
+newarr = []
+  newarr.push("#{str} Duck")
+end
   #= ["Donald Duck", "Daisy Duck", "Daffy Duck"]
   ```
 
@@ -317,6 +347,9 @@ Use `map` to do the following...
   ```ruby
   numbers = [ 1, 3, 9, 11, 100 ]
 
+numbers.map do |num|
+"#{num * num}"
+end
   # => [1, 9, 81, 121, 10000]
   ```
 
@@ -326,7 +359,10 @@ Use `map` to do the following...
 
   ```ruby
   fahrenheit_temps = [ -128.6, 0, 32, 140, 212 ]
-
+ 
+  fahrenheit_temps.map do |num|
+  "#{(num - 32) * 0.555555}"
+  end
   #=> [-89.2, -17.8, 0, 60, 100]
   ```
  <br>
@@ -343,8 +379,8 @@ Use `map` to do the following...
 
 1. choose the correct answer. <br>
 While loop checks the condition and the loop keeps on running till the condition is true, it stops when the condition becomes false. <br>
-a) True
-b) False
+a) True 
+
 --------
 
 2. What is the output of the given code?
@@ -357,9 +393,7 @@ while counter < 11
 end
 ```
 1. Prints the number from 1 to 10 
-2. Prints the number from 1 to 11
-3. Prints the number from 2 to 10
-4. Infinite loop
+
 
 --------
 3. What is the output of the given code?
@@ -371,9 +405,7 @@ while counter !=false
 end
 ```
 <ol type="a">
-  <li>True</li>
-  <li>False</li>
-  <li>Syntax error</li>
+ 
   <li>Infinite loop</li>
 
 </ol>
@@ -391,11 +423,9 @@ while i < 5
 end
 ```
 <ol type="a">
-  <li>1 2 3 4 5</li>
+  
   <li>0 1 4</li>
-  <li>0 1</li>
-  <li>1 4</li>
-
+  
 </ol>
 
 --------------
@@ -409,10 +439,9 @@ puts a+b
 end
 ```
 <ol type="a">
-  <li>5..15</li>
+  
   <li>20</li>
-  <li>Infinite loop</li>
-  <li>5 15</li>
+  
 
 </ol>
 
@@ -432,10 +461,9 @@ end
 end
 ```
 <ol type="a">
-  <li>5..15</li>
-  <li>20</li>
+  
   <li>Infinite loop</li>
-  <li>5 15</li>
+  
 
 </ol>
 
@@ -450,10 +478,8 @@ while i > 0 do
 end
 ```
 <ol type="a">
-  <li>3</li>
+  
   <li>321</li>
-  <li>Infinite loop</li>
-  <li> 3 2 1 0</li>
 
 </ol>
 
@@ -468,9 +494,7 @@ while i > 25 do
 end
 ```
 <ol type="a">
-  <li> 50..25</li>
-  <li>50..1</li>
-  <li>Infinite loop</li>
+
   <li>1111111111111111111111111</li>
 
 </ol>
@@ -487,10 +511,7 @@ while a<b do
   end
 ```
 <ol type="a">
-  <li>5 10</li>
   <li> 50 56</li>
-  <li>Infinite loop</li>
-  <li> 5 6 7 8 9 10</li>
 
 </ol>
 
@@ -505,10 +526,7 @@ while i > 25 && j>35 do
   j-=2
 end
 ```
-<ol type="a">
-  <li>25 35</li>
-  <li>50 55</li>
-  <li>Infinite loop</li>
+<ol type="a"> 
   <li> 55 54 53 52 51 50 48 47 46 45</li>
 
 </ol>
@@ -526,22 +544,50 @@ while i > 25 && i*j<100 do
 end
 ```
 <ol type="a">
-  <li>25 35</li>
   <li>No output</li>
-  <li>Infinite loop</li>
-  <li>55 54 53 52 51 50 48 47 46 45</li>
 
 </ol>
 
 
 ---------------------
 12. Take inputs from user to make an array. Again take one input from user and search it in the array and delete that element, if found. Iterate over array using for loop.
-
+----------
+ p "please enter multiple names : "
+input = gets.split(' ')
+p "please enter name to deleate it :"
+input2 = gets.chomp
+input.delete(input2)
+puts input
 ------
   
 
 13. Using (1...101), make two array, one containing all even numbers and other containing all odd numbers.
 
+even = []
+odd = []
+for i in 0..101
+
+if i.even? then
+ even.push(i)
+else 
+  odd.push(i)
+end
+
+end 
+p odd
+p even
+
+<!-- num1 = 1
+num2 = 101
+new1 = []
+new2 = []
+num1.upto(num2){ | i | 
+if i.even? then new1.push(i)
+else new2.push(i)
+end
+} 
+print new1
+print new2 -->
 ------
 
 
